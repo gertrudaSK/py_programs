@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{%trans "Services and Prices"%}</h1>
+<div class="visits-list">
+
+    <table class="table table-hover" style="background-color:rgb(192,192,192);opacity:0.8;">
+
+        <tr>
+            <th scope="col">{%trans "Service"%}</th>
+            <th style="text-align: right;" scope="col">{%trans "Price"%} $</th>
+        </tr>
+        {%for service in service_list%}
+        <tr>
+            <td>{{service.title}}</td>
+            <td style="text-align:right;">{{service.price}}</td>
+            {%endfor%}
+    </table>
+
+</div>
+{% endblock %}

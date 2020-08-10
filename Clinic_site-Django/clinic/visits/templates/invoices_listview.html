@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{%trans "My Invoices"%}</h1>
+<div class="visits-list">
+    {%if invoices%}
+
+    <table class="table table-hover visits-list-table" style="background-color:rgb(192,192,192);opacity:0.8;">
+
+        <tr>
+            <th scope="col">{%trans "Date"%}</th>
+            <th scope="col">{%trans "Invoice ID"%}</th>
+            <th scope="col">{%trans "Sum"%} $</th>
+            <th scope="col">{%trans "Invoice Status"%}</th>
+            <th scope="col">{%trans "Detail"%}</th>
+        </tr>
+        {%for invoice in invoices%}
+        <tr>
+            <td>{{invoice.date | date:"Y-m-d"}}</td>
+            <td>{{invoice.invoice_no}}</td>
+            <td>{{invoice.sum}}</td>
+            {%if invoice.status == 'u'%}
+            <td>{%trans "Unpaid"%}</td>
+            <td><a class="btn btn-danger btn-sm" href="{%url 'invoice-detail' invoice.id%}"/>{%trans "Detail"%}</td>
+            {%elif invoice.status == 'p'%}
+            <td>{%trans "Paid"%}</td>
+            <td><a class="btn btn-sccess btn-sm" href="{%url 'invoice-detail' invoice.id%}"/>{%trans "Detail"%}</td>
+            {%elif invoice.status == 'c'%}
+            <td>{%trans "Canceled"%}</td>
+            <td><a class="btn btn-secondary btn-sm" href="{%url 'invoice-detail' invoice.id%}"/>{%trans "Detail"%}</td>
+
+            {%endif%}
+        </tr>
+        {%endfor%}
+    </table>
+    <div class="container puslapiai">
+        <nav aria-label="...">
+            {% if invoices.has_other_pages %}
+            <ul class="pagination pagination-sm justify-content-end">
+                {% for i in invoices.paginator.page_range %}
+                {% if invoices.number == i %}
+                <li class="page-item active">
+                    <a class="page-link">{{ i }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </nav>
+    </div>
+
+    {% else %}
+    <p>{%trans "There are no invoices."%}</p>
+
+    {% endif %}
+</div>
+{% endblock %}
+

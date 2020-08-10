@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<h1>{%trans "Search by"%} "{{query}}" {%trans "results"%}</h1>
+</br>
+{% if patients %}
+<div class="visits-list">
+    <table class="table table-hover" style="background-color:rgb(192,192,192);opacity:0.8;">
+        <tr>
+            <th scope="col">{%trans "Name"%}</th>
+            <th scope="col">{%trans "Email"%}</th>
+            <th scope="col">{%trans "Phone"%}</th>
+            <th scope="col">{%trans "Balance"%} $</th>
+            <th scope="col">{%trans "Patient Card"%}</th>
+        </tr>
+        {%for patient in patients%}
+        <tr>
+            <td>{{patient.name}}</td>
+            <td>{{patient.email}}</td>
+            <td>{{patient.phone_number}}</td>
+            {% load humanize %}
+            <td>{{patient.balance|floatformat:2|intcomma}}</td>
+            <td><a class="btn btn-secondary btn-sm" href="{%url 'patient-card' patient.pk %}">{%trans "View"%}</a></td>
+            {%endfor%}
+    </table>
+</div>
+{% else %}
+<p>{%trans "Oops. Nothing found!"%}</p>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section" align="center">
+    <h3>Įveskite pajamų informaciją</h3>
+    <form method="post" action="#">
+        {{form.csrf_token}}
+        <div class="form-group">
+            <div class="col">
+                {{form.suma.label(class="form-control-label")}}
+                {{form.suma(class="form-control", value=p.suma)}}
+                {% if form.suma.errors %}
+                {% for error in form.suma.errors %}
+                <small><font color=red">{{error}}</font></small>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col">
+                {{form.kategorija.label(class="form-control-label")}}
+                {{form.kategorija(class="form-control",
+                value=p.kategorija)}}
+            </div>
+            <div class="col">
+                {{form.siuntejas.label(class="form-control-label")}}
+                {{form.siuntejas(class="form-control", value=p.siuntejas)}}
+            </div>
+            <div class="col">
+                {{form.papildoma_info.label(class="form-control-label")}}
+                {{form.papildoma_info(class="form-control",
+                value=p.papildoma_informacija)}}
+            </div>
+            <div class="col">
+                {{form.atsiskaitymas.label(class="form-control-label")}}
+                {{form.atsiskaitymas(class="form-control",
+                value=p.atsiskaitymo_budas)}}
+            </div>
+            <div class="col">
+                {{form.isigyta.label(class="form-control-label")}}
+                {{form.isigyta(class="form-control",
+                value=p.isigyta_preke_paslauga)}}
+            </div>
+        </div>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container lygiuote">
+    <h3 align="center">Ataskaita</h3>
+    <div class="u-full-width">
+        {{ pagination.links }}
+        {% for i in list %}
+        {%if i.tipas =="PAJAMOS"%}
+        <p><b>Pajamos:</b> ID: {{i.id}}<br> suma: {{i.suma}}<br> kategorija:
+            {{i.kategorija}}<br> siuntejas: {{i.siuntejas}}<br> papildoma
+            informacija: {{i.papildoma_informacija}}<br> atsiskaitymo budas:
+            {{i.atsiskaitymo_budas}}<br> isigyta preke ar
+            paslauga: {{i.isigyta_preke_paslauga}}<br> ivedimo data:
+            {{i.laikas}}
+        </p>
+        <p class="grafa"><a
+                href="{{url_for('koreguoti_irasap', id=i['id'], tipas=i['tipas']) }}">
+            Koreguoti</a>
+
+            <a
+                    href="{{url_for('istrinti_irasa', id=i['id'], tipas=i['tipas']) }}">
+                Istrinti</a>
+        </p>
+        {%elif i.tipas =="IŠLAIDOS"%}
+        <p><b>Išlaidos:</b> ID: {{i.id}}<br> suma: {{i.suma}}<br>
+            kategorija:
+            {{i.kategorija}}<br> ivedimo data: {{i.laikas}}</p>
+        <p class="grafa"><a
+                href="{{url_for('koreguoti_irasai', id=i['id'], tipas=i['tipas']) }}">
+            Koreguoti</a>
+
+            <a
+                    href="{{url_for('istrinti_irasa', id=i['id'], tipas=i['tipas']) }}">
+                Istrinti</a>
+        </p>
+        {%endif%}
+        {%endfor%}
+        {{ pagination.links }}
+    </div>
+    <div class="block">
+        <img src="https://s.yimg.com/ny/api/res/1.2/Q1yQvQzEWyoh9yWSj2ZkNg--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9NjAw/http://media.zenfs.com/en-US/homerun/motleyfool.com/1fdcce1bd3de8204abf593a4eaf7d30f"
+             alt="broken pig">
+    </div>
+</div>
+{% endblock %}
+

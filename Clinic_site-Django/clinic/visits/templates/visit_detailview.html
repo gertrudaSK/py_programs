@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<h1>{%trans "Patient"%} {{card.patient_ID.name}} {%trans "Visit Detail"%}</h1>
+<div class="visits-list">
+    <table class="table table-hover" style="background-color:rgb(192,192,192);opacity:0.8;">
+        <tr>
+            <th scope="col">{%trans "Visit Date"%}</th>
+            <th scope="col">{%trans "Doctor"%}</th>
+            <th scope="col">{%trans "Department"%}</th>
+            <th scope="col">{%trans "Invoice"%}</th>
+            <th scope="col">{%trans "Sum"%} $</th>
+        </tr>
+        <tr>
+            <td>{{card.appointment_ID.date_time|date:"Y-m-d H:i"}}</td>
+            <td>{{card.appointment_ID.doctor_ID.name}}</td>
+            <td>{{card.appointment_ID.department.title}}</td>
+            <td>{{card.invoice_ID.invoice_no}}</td>
+            <td>{{card.invoice_ID.sum}}</td>
+    </table>
+    <div class="block-card">
+        <h5><strong>{%trans "Symptoms"%}</strong></h5>
+        <p> {{card.symptoms}}</p>
+        <h5><strong>{%trans "Treatment"%}</strong></h5>
+        <p> {{card.treatment}}</p>
+        <h5><strong>{%trans "Prognosis"%}</strong></h5>
+        <p> {{card.prognosis}}</p>
+        <h5><strong>{%trans "Comments"%}</strong></h5>
+        <p> {{card.comments}}</p>
+    </div>
+</div>
+
+{%if user.is_doctor%}
+<a class="btn btn-primary register-button" href="{%url 'visit-update' card.id %}">{%trans "Update"%}</a>
+{%endif%}
+{% endblock %}

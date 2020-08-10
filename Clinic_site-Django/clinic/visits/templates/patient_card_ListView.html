@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<h1>Patient Card</h1>
+<div class="visits-list">
+    <table class="table table-hover" style="background-color:rgb(102,205,170);opacity:0.8;">
+        <tr>
+            <th scope="col">{%trans "Name"%}</th>
+            <th scope="col">{%trans "Birthday"%}</th>
+            <th scope="col">{%trans "Email"%}</th>
+            <th scope="col">{%trans "Phone"%}</th>
+            <th scope="col">{%trans "Address"%}</th>
+            <th scope="col">SD</th>
+            <th scope="col">{%trans "Balance"%} $</th>
+
+        </tr>
+        {%for patient in patients%}
+        <tr>
+            <td>{{patient.name}}</td>
+            <td>{{patient.birth_day|date:"Y-m-d"}}</td>
+            <td>{{patient.email}}</td>
+            <td>{{patient.phone_number}}</td>
+            <td>{{patient.address}}</td>
+            <td>{{patient.SD}}</td>
+            {% load humanize %}
+            <td>{{patient.balance|floatformat:2|intcomma}}</td>
+            {%endfor%}
+        </tr>
+    </table>
+</div>
+<h1>{%trans "Visits History"%}</h1>
+<div class="visits-list">
+    <table class="table table-hover" style="background-color:rgb(192,192,192);opacity:0.8;">
+        <tr>
+            <th scope="col">{%trans "Visit Date"%}</th>
+            <th scope="col">{%trans "Doctor"%}</th>
+            <th scope="col">{%trans "Department"%}</th>
+            <th scope="col">{%trans "Symptoms"%}</th>
+            <th scope="col">{%trans "Detail"%}</th>
+        </tr>
+        {%for card in cards%}
+        <tr>
+            <td>{{card.appointment_ID.date_time|date:"Y-m-d H:i"}}</td>
+            <td>{{card.appointment_ID.doctor_ID.name}}</td>
+            <td>{{card.appointment_ID.department.title}}</td>
+            <td>{{card.symptoms| truncatewords:"2"|linebreaks}}</td>
+            <td><a class="btn btn-secondary btn-sm" href="{%url 'visit-detail' card.pk %}"/>{%trans "Detail"%}</td>
+            {%endfor%}
+    </table>
+    <div class="container puslapiai">
+        <nav aria-label="...">
+            {% if cards.has_other_pages %}
+            <ul class="pagination pagination-sm justify-content-end">
+                {% for i in cards.paginator.page_range %}
+                {% if cards.number == i %}
+                <li class="page-item active">
+                    <a class="page-link">{{ i }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </nav>
+    </div>
+</div>
+{% endblock %}

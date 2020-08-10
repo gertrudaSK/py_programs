@@ -1,0 +1,218 @@
+* {
+box-sizing: border-box;
+}
+
+a {
+text-decoration: none;
+color: white;
+}
+
+a:hover {
+cursor: pointer;
+text-decoration:none;
+}
+
+body {
+background: url('../image/cover.jpg')no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+font-family: 'Heebo', sans-serif;
+color: white;
+}
+
+.wrapper {
+max-width: 1000px;
+margin: 0 auto;
+padding: 0 10px;
+}
+
+
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0;
+}
+
+h1 {
+font-size: 25px;
+margin: 0;
+}
+
+ul {
+list-style: none;
+padding: 0;
+display: flex;
+align-items: center;
+}
+
+.meniu-nav li:not(:last-child) {
+margin-right: 30px;
+}
+
+.cover-text{
+color: #6666ff;
+font-size: 30px;
+}
+
+footer {
+padding: 100px;
+text-align: center;
+color: white;
+}
+
+.base_color{
+color: black;
+}
+
+.selection{
+display: flex;
+margin-top: 20px;
+
+}
+.select-status{
+flex: 1;
+}
+
+
+.select-status>h2{
+text-align: center;
+}
+
+.select-button{
+text-align: center;
+}
+
+.block-content{
+margin-top: 15px;
+}
+.visits-list{
+margin-top: 15px;
+}
+.visits-list-table{
+color: #283747 ;
+}
+
+
+
+.doctors {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+grid-gap: 20px;
+}
+
+.doctors .card {
+margin-bottom:#5DADE2;
+background-color: #5499C7 ;
+}
+
+.doctors .card img {
+object-fit: cover;
+width: 100%;
+height: 350px;
+
+}
+
+.card h3 {
+font-weight: normal;
+font-size: 24px;
+}
+
+.doctors .card h4 {
+font-size: 16px;
+font-weight: normal;
+}
+
+.bootstrap-iso .formden_header h2,
+.bootstrap-iso .formden_header p,
+.bootstrap-iso form{
+font-family: Arial, Helvetica, sans-serif;
+color: black
+}
+
+.bootstrap-iso form button,
+.bootstrap-iso form button:hover{
+color: white !important;
+}
+
+.asteriskField{
+color: red;
+}
+
+.col-lg-7{
+margin: 0 auto;
+}
+
+.map-container-section {
+overflow:hidden;
+padding-bottom:56.25%;
+position:relative;
+height:0;
+}
+.map-container-section iframe {
+left:0;
+top:0;
+height:100%;
+width:100%;
+position:absolute;
+}
+
+.block-card{
+color: #212529;
+background-color:rgb(192,192,192);
+opacity:0.8;
+padding: 10px;
+}
+
+.help-block strong{
+display: none;
+}
+
+.dropdown-menu > li.checkbox{
+padding: 3px 20px;
+}
+
+.invoice-lines{
+text-align: center;
+font-size: 20px;
+}
+
+/*neveikia*/
+.dropdown-menu show{
+min-width: 30rem!important;
+}
+
+.profile-section{
+background-color: rgb(192,192,192,0.5);
+padding: 20px;
+}
+
+.register-button{
+margin-top: 10px;
+}
+
+.text-muted{
+color: white!
+}
+.login-button{
+margin: 10px 0 10px 0;
+}
+
+.page-item.active{
+margin-right: 0!important;
+}
+
+.profile-img{
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 28px 40px;
+    height: 200px;
+    width: 200px;
+}
+
+@media screen and (max-width: 800px){
+h1.logo{
+display: none;}
+}

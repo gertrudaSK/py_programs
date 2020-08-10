@@ -1,0 +1,605 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-01 23:06+0300\n"
+"PO-Revision-Date: 2020-06-25 23:38+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: lt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+"X-Generator: Poedit 2.3.1\n"
+
+#: .\models.py:17 .\models.py:79
+msgid "name"
+msgstr "Vardas Pavardė"
+
+#: .\models.py:18
+msgid "birth day"
+msgstr "gimimo data"
+
+#: .\models.py:19 .\models.py:81
+msgid "email"
+msgstr "el. paštas"
+
+#: .\models.py:20 .\models.py:80
+msgid "phone number"
+msgstr "telefono numeris"
+
+#: .\models.py:21
+msgid "address"
+msgstr "adresas"
+
+#: .\models.py:22
+msgid "Social Insurance ID"
+msgstr "Soc. draudimo ID"
+
+#: .\models.py:36 .\templates\appointment_listview.html:12
+#: .\templates\visit_detailview.html:4
+msgid "Patient"
+msgstr "Pacientas"
+
+#: .\models.py:37 .\templates\base.html:66 .\templates\base.html:82
+#: .\templates\patient_listview.html:4
+msgid "Patients"
+msgstr "Pacientai"
+
+#: .\models.py:43
+msgid "symptoms"
+msgstr "simptomai"
+
+#: .\models.py:44
+msgid "treatment"
+msgstr "gydymas"
+
+#: .\models.py:45
+msgid "prognosis"
+msgstr "prognozė"
+
+#: .\models.py:46
+msgid "comments"
+msgstr "pastabos"
+
+#: .\models.py:51
+msgid "Patient Card Record"
+msgstr "Paciento kortelės įrašas"
+
+#: .\models.py:52
+msgid "Patient Card Records"
+msgstr "Paciento kortelės įrašai"
+
+#: .\models.py:60 .\templates\appointment_listview.html:21
+#: .\templates\patient_visits_ListView.html:22
+msgid "Waiting"
+msgstr "Laukiama"
+
+#: .\models.py:62 .\templates\appointment_listview.html:25
+#: .\templates\patientCard_createview.html:28
+#: .\templates\patientCard_createview_update.html:28
+#: .\templates\patient_visits_ListView.html:26
+msgid "Completed"
+msgstr "Įvykdyta"
+
+#: .\models.py:64 .\templates\InvoiceLine_detailview.html:26
+#: .\templates\invoices_listview.html:29
+#: .\templates\patientCard_createview.html:32
+#: .\templates\patientCard_createview_update.html:32
+msgid "Canceled"
+msgstr "Atšaukta"
+
+#: .\models.py:82
+msgid "experience (years)"
+msgstr "patirtis (metais)"
+
+#: .\models.py:89
+msgid "Departments"
+msgstr "Skyrius"
+
+#: .\models.py:92 .\templates\patient_card_ListView.html:36
+#: .\templates\patient_visits_ListView.html:13
+#: .\templates\visit_detailview.html:9
+msgid "Doctor"
+msgstr "Gydytojas"
+
+#: .\models.py:93 .\templates\base.html:53 .\templates\base.html:68
+#: .\templates\base.html:91
+msgid "Doctors"
+msgstr "Gydytojai"
+
+#: .\models.py:102
+msgid "appointment date and time"
+msgstr "vizito data ir laikas"
+
+#: .\models.py:105
+msgid "waiting"
+msgstr "laukiama"
+
+#: .\models.py:106
+msgid "completed"
+msgstr "įvykdyta"
+
+#: .\models.py:107 .\models.py:204
+msgid "canceled"
+msgstr "atšaukta"
+
+#: .\models.py:114 .\models.py:211 .\templates\InvoiceLine_detailview.html:13
+#: .\templates\appointment_listview.html:13
+#: .\templates\patient_visits_ListView.html:14
+msgid "Status"
+msgstr "Būsena"
+
+#: .\models.py:117
+msgid "Appointment"
+msgstr "Vizitas"
+
+#: .\models.py:118 .\templates\appointment_listview.html:4
+#: .\templates\base.html:61 .\templates\base.html:77
+msgid "Appointments"
+msgstr "Vizitai"
+
+#: .\models.py:136 .\templates\appointment_listview.html:11
+#: .\templates\doctor_form.html:10 .\templates\patient_card_ListView.html:37
+#: .\templates\patient_visits_ListView.html:12
+#: .\templates\visit_detailview.html:10
+msgid "Department"
+msgstr "Skyrius"
+
+#: .\models.py:143
+msgid "service"
+msgstr "paslauga"
+
+#: .\models.py:144
+msgid "price"
+msgstr "kaina"
+
+#: .\models.py:148 .\templates\InvoiceLine_detailview.html:35
+#: .\templates\services_listview.html:10
+msgid "Service"
+msgstr "Paslauga"
+
+#: .\models.py:149 .\templates\base.html:54 .\templates\base.html:69
+#: .\templates\base.html:92
+msgid "Services"
+msgstr "Paslaugos"
+
+#: .\models.py:156
+msgid "Quantity"
+msgstr "Kiekis"
+
+#: .\models.py:157 .\templates\services_listview.html:11
+msgid "Price"
+msgstr "Kaina"
+
+#: .\models.py:162
+msgid "sum"
+msgstr "suma"
+
+#: .\models.py:180
+msgid "Invoice line"
+msgstr "Sąskaitos-faktūros eilutė"
+
+#: .\models.py:181
+msgid "Invoice lines"
+msgstr "Sąskaitos-faktūros eilutės"
+
+#: .\models.py:196 .\templates\InvoiceLine_detailview.html:11
+#: .\templates\invoices_listview.html:12
+msgid "Invoice ID"
+msgstr "Sąskaitos-faktūros ID"
+
+#: .\models.py:197
+msgid "Invoice date"
+msgstr "Sąskaitos-faktūros data"
+
+#: .\models.py:202
+msgid "unpaid"
+msgstr "neapmokėta"
+
+#: .\models.py:203
+msgid "paid"
+msgstr "apmokėta"
+
+#: .\models.py:226 .\templates\patientCard_createview.html:36
+#: .\templates\visit_detailview.html:11
+msgid "Invoice"
+msgstr "Sąskaita-faktūra"
+
+#: .\models.py:227 .\templates\base.html:52
+msgid "Invoices"
+msgstr "Sąskaitos-faktūros"
+
+#: .\models.py:233
+msgid "Image"
+msgstr "Nuotrauka"
+
+#: .\models.py:237 .\models.py:239 .\models.py:241
+#, fuzzy, python-format
+#| msgid "%(username)s (profile)"
+msgid "%(username)s profile"
+msgstr "%(username)s (profilis)"
+
+#: .\templates\InvoiceLine_detailview.html:10
+#: .\templates\invoices_listview.html:11
+#: .\templates\patient_visits_ListView.html:11
+msgid "Date"
+msgstr "Data"
+
+#: .\templates\InvoiceLine_detailview.html:12
+#: .\templates\InvoiceLine_detailview.html:36
+#: .\templates\invoices_listview.html:13 .\templates\visit_detailview.html:12
+msgid "Sum"
+msgstr "Suma"
+
+#: .\templates\InvoiceLine_detailview.html:22
+#: .\templates\invoices_listview.html:23
+msgid "Unpaid"
+msgstr "Neapmokėta"
+
+#: .\templates\InvoiceLine_detailview.html:24
+#: .\templates\invoices_listview.html:26
+msgid "Paid"
+msgstr "Apmokėta"
+
+#: .\templates\appointment_create.html:5 .\templates\base.html:44
+#: .\templates\select_department.html:10
+msgid "New Appointment"
+msgstr "Naujas vizitas"
+
+#: .\templates\appointment_create.html:15
+msgid "Select Doctor"
+msgstr "Pasirinkite gydytoją"
+
+#: .\templates\appointment_create.html:24
+msgid "Select Patient"
+msgstr "Pasirinkite pacientą"
+
+#: .\templates\appointment_create.html:34
+msgid "Select Date"
+msgstr "Pasirinkite datą"
+
+#: .\templates\appointment_create.html:41
+#: .\templates\patientCard_createview.html:48
+#: .\templates\patientCard_createview_update.html:35
+msgid "Submit"
+msgstr "Patvirtinti"
+
+#: .\templates\appointment_listview.html:10
+#: .\templates\patient_card_ListView.html:35
+#: .\templates\visit_detailview.html:8
+msgid "Visit Date"
+msgstr "Vizito data"
+
+#: .\templates\appointment_listview.html:23
+#: .\templates\patient_visits_ListView.html:24
+msgid "Calceled"
+msgstr "Atšaukta"
+
+#: .\templates\base.html:49 .\templates\base.html:65 .\templates\base.html:81
+msgid "Profile"
+msgstr "Anketa"
+
+#: .\templates\base.html:50 .\templates\patient_listview.html:18
+#: .\templates\search.html:14
+msgid "Patient Card"
+msgstr "Paciento kortelė"
+
+#: .\templates\base.html:51
+msgid "My visits"
+msgstr "Mano vizitai"
+
+#: .\templates\base.html:55 .\templates\base.html:70 .\templates\base.html:93
+msgid "Contact"
+msgstr "Kontaktai"
+
+#: .\templates\base.html:57 .\templates\base.html:73 .\templates\base.html:84
+msgid "Log out"
+msgstr "Išeiti"
+
+#: .\templates\base.html:89
+msgid "Login"
+msgstr "Prisijungti"
+
+#: .\templates\contact.html:19
+msgid "United States"
+msgstr "Jungtinės Valstijos"
+
+#: .\templates\doctor_form.html:8 .\templates\patient_card_ListView.html:8
+#: .\templates\patient_form.html:8 .\templates\patient_listview.html:14
+#: .\templates\search.html:10
+msgid "Name"
+msgstr "Vardas Pavardė"
+
+#: .\templates\doctor_form.html:9 .\templates\patient_card_ListView.html:10
+#: .\templates\patient_form.html:9 .\templates\patient_listview.html:15
+#: .\templates\search.html:11
+msgid "Email"
+msgstr "El. paštas"
+
+#: .\templates\doctor_form.html:11 .\templates\patient_card_ListView.html:11
+#: .\templates\patient_form.html:11 .\templates\patient_listview.html:16
+#: .\templates\search.html:12
+msgid "Phone"
+msgstr "Telefono numeris"
+
+#: .\templates\doctor_form.html:12
+msgid "Experience (y)"
+msgstr "Patirtis (metais)"
+
+#: .\templates\doctor_form.html:28 .\templates\patient_form.html:30
+msgid "Update Personal Information"
+msgstr "Atnaujinti asmeninę info"
+
+#: .\templates\doctor_form.html:32 .\templates\patient_form.html:34
+#: .\templates\profile.html:22 .\templates\visit_detailview.html:34
+msgid "Update"
+msgstr "Atnaujinti"
+
+#: .\templates\doctor_listview.html:10
+msgid "Specialty"
+msgstr "Specializacija"
+
+#: .\templates\doctor_register.html:11 .\templates\patient_register.html:11
+#: .\templates\patient_register.html:24 .\templates\select_department.html:27
+msgid "Register"
+msgstr "Registruotis"
+
+#: .\templates\invoices_listview.html:4
+msgid "My Invoices"
+msgstr "Mano sąskaitos-faktūros"
+
+#: .\templates\invoices_listview.html:14
+msgid "Invoice Status"
+msgstr "Sąskaitos-faktūros būsena"
+
+#: .\templates\invoices_listview.html:15 .\templates\invoices_listview.html:24
+#: .\templates\invoices_listview.html:27 .\templates\invoices_listview.html:30
+#: .\templates\patient_card_ListView.html:39
+#: .\templates\patient_card_ListView.html:47
+msgid "Detail"
+msgstr "Detaliai"
+
+#: .\templates\invoices_listview.html:57
+msgid "There are no invoices."
+msgstr "Sąskaitų nėra."
+
+#: .\templates\patientCard_createview.html:6
+#: .\templates\patientCard_createview_update.html:6
+msgid "Patient's"
+msgstr "Paciento"
+
+#: .\templates\patientCard_createview.html:6
+msgid "New Card Record"
+msgstr "naujas kortelės įrašas"
+
+#: .\templates\patientCard_createview.html:11
+#: .\templates\patientCard_createview_update.html:11
+#: .\templates\patient_card_ListView.html:38
+#: .\templates\visit_detailview.html:22
+msgid "Symptoms"
+msgstr "Simptomai"
+
+#: .\templates\patientCard_createview.html:15
+#: .\templates\patientCard_createview_update.html:15
+#: .\templates\visit_detailview.html:24
+msgid "Treatment"
+msgstr "Gydymas"
+
+#: .\templates\patientCard_createview.html:19
+#: .\templates\patientCard_createview_update.html:19
+#: .\templates\visit_detailview.html:26
+msgid "Prognosis"
+msgstr "Prognozė"
+
+#: .\templates\patientCard_createview.html:23
+#: .\templates\patientCard_createview_update.html:23
+#: .\templates\visit_detailview.html:28
+msgid "Comments"
+msgstr "Pastabos"
+
+#: .\templates\patientCard_createview.html:44
+msgid "select"
+msgstr "pasirinkti"
+
+#: .\templates\patientCard_createview_update.html:6
+msgid "New Card Record Update"
+msgstr "Paciento kortelės įrašo atnaujinimas"
+
+#: .\templates\patient_card_ListView.html:9 .\templates\patient_form.html:10
+msgid "Birthday"
+msgstr "Gimimo data"
+
+#: .\templates\patient_card_ListView.html:12 .\templates\patient_form.html:12
+msgid "Address"
+msgstr "Adresas"
+
+#: .\templates\patient_card_ListView.html:14
+#: .\templates\patient_listview.html:17 .\templates\search.html:13
+msgid "Balance"
+msgstr "Balansas"
+
+#: .\templates\patient_card_ListView.html:31
+msgid "Visits History"
+msgstr "Vizitų istorija"
+
+#: .\templates\patient_listview.html:7
+msgid "Search"
+msgstr "Paieška"
+
+#: .\templates\patient_listview.html:27 .\templates\search.html:23
+msgid "View"
+msgstr "Rodyti"
+
+#: .\templates\patient_visits_ListView.html:4
+msgid "My Visits History"
+msgstr "Mano vizitų istorija"
+
+#: .\templates\patient_visits_ListView.html:52
+msgid "There are no visits."
+msgstr "Vizitų nėra."
+
+#: .\templates\profile.html:17
+msgid "Profile info"
+msgstr "Anketos info"
+
+#: .\templates\profile.html:24 .\templates\profile.html:26
+msgid "See Personal Info"
+msgstr "Asmeninė informacija"
+
+#: .\templates\registration\logged_out.html:4
+msgid "You are successfully log out!"
+msgstr "Sėkmingai atsijungėte!"
+
+#: .\templates\registration\logged_out.html:5
+#: .\templates\registration\login.html:26
+msgid "Sign In"
+msgstr "Prisijungti"
+
+#: .\templates\registration\login.html:5
+msgid "Oops something wrong! Try again."
+msgstr "Oops Įvyko klaida! Bandykite dar kartą."
+
+#: .\templates\registration\login.html:18
+msgid "User"
+msgstr "Vartotojas"
+
+#: .\templates\registration\login.html:22
+msgid "Password"
+msgstr "Slaptažodis"
+
+#: .\templates\registration\login.html:30
+msgid "Forgot your password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: .\templates\registration\password_reset_complete.html:4
+msgid "Your password is successfully changed!"
+msgstr "Slaptažodis atnaujintas!"
+
+#: .\templates\registration\password_reset_complete.html:5
+msgid "Log In"
+msgstr "Prisijungti"
+
+#: .\templates\registration\password_reset_confirm.html:10
+msgid "New Password"
+msgstr "Naujas slaptažodis"
+
+#: .\templates\registration\password_reset_confirm.html:15
+msgid "Confirm please"
+msgstr "Pakartokite"
+
+#: .\templates\registration\password_reset_confirm.html:21
+msgid "Change the password"
+msgstr "Pakeisti slaptažodį"
+
+#: .\templates\registration\password_reset_confirm.html:26
+msgid "Oops something wrong!"
+msgstr "Oops. Nieko nerasta!"
+
+#: .\templates\registration\password_reset_confirm.html:27
+msgid "The link is not active. Please reset your password again."
+msgstr "Nuoroda neaktyvi. Sugeneruokite slaptažodį dar kartą."
+
+#: .\templates\registration\password_reset_done.html:4
+msgid "Check Your Email!"
+msgstr "Patikrinkite savo el. paštą!"
+
+#: .\templates\registration\password_reset_form.html:11
+msgid "Reset password"
+msgstr "Atstatyti slaptažodį"
+
+#: .\templates\search.html:4
+msgid "Search by"
+msgstr "Paieška pagal"
+
+#: .\templates\search.html:4
+msgid "results"
+msgstr "rezultatai"
+
+#: .\templates\search.html:28
+msgid "Oops. Nothing found!"
+msgstr "Oops. Nieko nerasta!"
+
+#: .\templates\select_department.html:12
+msgid "Please select the department"
+msgstr "Pasirinkite skyrių"
+
+#: .\templates\select_department.html:22
+msgid "I have an account"
+msgstr "Aš turiu paskyrą"
+
+#: .\templates\select_department.html:23
+msgid "Sign in"
+msgstr "Prisijungti"
+
+#: .\templates\select_department.html:26
+msgid "I want to become clinic patient"
+msgstr "Noriu tapti klinikos pacientu"
+
+#: .\templates\services_listview.html:4
+msgid "Services and Prices"
+msgstr "Paslaugos ir kainos"
+
+#: .\templates\visit_detailview.html:4
+msgid "Visit Detail"
+msgstr "Vizito detalizacija"
+
+#: .\views.py:56
+msgid "This time is already token. Select another please."
+msgstr "Šis laikas jau užimtas - pasirinkite kitą."
+
+#: .\views.py:66
+msgid "Your new appointment is created!"
+msgstr "Jūsų naujas vizitas užregistruotas!"
+
+#: .\views.py:68 .\views.py:77 .\views.py:80
+msgid "The fields must be filled."
+msgstr "Laukai turi būti užpildyti."
+
+#: .\views.py:75
+msgid "New appointment is created!"
+msgstr "Naujas vizitas užregistruotas!"
+
+#: .\views.py:214
+msgid "The new record is created and Invoice is sent to patient email!"
+msgstr ""
+"Naujas įrašas sukurtas ir sąskaita faktūra išsiųsta el. paštu klientui!"
+
+#: .\views.py:235
+msgid "Thank you for coming to Cleveland Clinic!"
+msgstr "Dėkojame, kad apsilankėte Cleveland klinikoje!"
+
+#: .\views.py:264
+msgid "Mail sent successfully."
+msgstr "El. laiškas išsiųstas."
+
+#: .\views.py:273
+#, python-format
+msgid "Invoice %(invoice_id)s was successfully created."
+msgstr "Sąskaita faktūra %(invoice_id)s sukurta."
+
+#: .\views.py:310
+msgid "Profile is now updated!"
+msgstr "Profilis atnaujintas!"
+
+#: .\views.py:314
+msgid "There was an error updating your profile"
+msgstr "Atnaujinant anketą įvyko klaida."
+
+#: .\views.py:388
+msgid "Sorry you do not have permission!"
+msgstr "Deja jūs neturite teisių."
+
+#~ msgid "Request an Appointment"
+#~ msgstr "Naujas vizitas"
+
+#~ msgid "If you want to change your password click the link below please:"
+#~ msgstr "Jei norite pasikeisti slaptažodį, spauskite nuorodą."

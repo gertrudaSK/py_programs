@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+<p>{%trans "You are successfully log out!"%}</p>
+<a class="btn btn-success" href="{% url 'login'%}">{%trans "Sign In"%}</a>
+{% endblock %}

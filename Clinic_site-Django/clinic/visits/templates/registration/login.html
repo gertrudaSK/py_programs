@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+{% if form.errors %}
+<p><strong>{%trans "Oops something wrong! Try again."%}</strong></p>
+{% endif %}
+{% load i18n %}
+{% if next %}
+{% if user.is_authenticated %}
+<p>The authentification is need it.</p>
+{% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>{%trans "User"%}:</td>
+            <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+            <td>{%trans "Password"%}:</td>
+            <td>{{ form.password }}</td>
+        </tr>
+    </table>
+    <input type="submit" class="btn btn-success login-button" value="{% blocktrans %}Sign In{% endblocktrans %}"/>
+    <input type="hidden" name="next" value="{{ next }}"/>
+</form>
+
+<p><a href="{% url 'password_reset' %}">{%trans "Forgot your password?"%}</a></p>
+{% endblock %}
+

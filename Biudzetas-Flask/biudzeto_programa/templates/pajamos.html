@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="content-section" align="center">
+    <h3>Įveskite pajamų informaciją</h3>
+    <form method="post" action="#">
+        {{form.csrf_token}}
+        <div class="form-group">
+            <div class="col">
+                {{form.suma.label(class="form-control-label tarpas")}}
+                {{form.suma(class="form-control")}}
+                {% if form.suma.errors %}
+                {% for error in form.suma.errors %}
+                <small><font color=red">{{error}}</font></small>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col">
+                {{form.kategorija.label(class="form-control-label tarpas")}}
+                {{form.kategorija(class="form-control")}}
+            </div>
+            <div class="col">
+                {{form.siuntejas.label(class="form-control-label tarpas")}}
+                {{form.siuntejas(class="form-control")}}
+            </div>
+            <div class="col">
+                {{form.papildoma_info.label(class="form-control-label tarpas")}}
+                {{form.papildoma_info(class="form-control")}}
+            </div>
+            <div class="col">
+                {{form.atsiskaitymas.label(class="form-control-label tarpas")}}
+                {{form.atsiskaitymas(class="form-control")}}
+            </div>
+            <div class="col">
+                {{form.isigyta.label(class="form-control-label tarpas")}}
+                {{form.isigyta(class="form-control")}}
+            </div>
+        </div>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Cleveland Clinic</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
+          rel="stylesheet">
+
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>
+
+    <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-datetimepicker@2.5.21/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+</head>
+<body>
+<header>
+    <div class="wrapper">
+        <nav>
+
+            <h1 class="logo"><a href="{%url 'index' %}"><i class="las la-star-of-life"></i>Cleveland Clinic</a></h1>
+            <ul class="meniu-nav">
+                {% load i18n %}
+                <li class="btn btn-success"><a href="{%url 'appointment'%}">{% trans "New Appointment" %}</a></li>
+                {%if user.is_patient%}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="las la-user"></i>{{user.get_username}}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'profilis' %}">{%trans "Profile"%}</a>
+                        <a class="dropdown-item" href="{%url 'patient-card' user.pk %}">{%trans "Patient Card"%}</a>
+                        <a class="dropdown-item" href="{%url 'appointment-active'%}">{%trans "My visits"%}</a>
+                        <a class="dropdown-item" href="{%url 'invoices'%}">{%trans "Invoices"%}</a>
+                        <a class="dropdown-item" href="{%url 'doctors_list'%}">{%trans "Doctors"%}</a>
+                        <a class="dropdown-item" href="{%url 'services'%}">{%trans "Services"%}</a>
+                        <a class="dropdown-item" href="{%url 'contact'%}">{%trans "Contact"%}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{%url 'logout'%}">{%trans "Log out"%}</a>
+                    </div>
+                </li>
+                {%elif user.is_doctor%}
+                <li class="btn btn-secondary"><a href="{%url 'visits'%}">{%trans "Appointments"%}</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="las la-user-nurse"></i>{{user.get_username}}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'profilis' %}">{%trans "Profile"%}</a>
+                        <a class="dropdown-item" href="{%url 'patients_list'%}">{%trans "Patients"%}</a>
+
+                        <a class="dropdown-item" href="{%url 'doctors_list'%}">{%trans "Doctors"%}</a>
+                        <a class="dropdown-item" href="{%url 'services'%}">{%trans "Services"%}</a>
+                        <a class="dropdown-item" href="{%url 'contact'%}">{%trans "Contact"%}</a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{%url 'logout'%}">{%trans "Log out"%}</a>
+                    </div>
+                </li>
+                {%elif user.is_authenticated%}
+                <li class="btn btn-secondary"><a href="{%url 'visits'%}">{%trans "Appointments"%}</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i class="las la-user-nurse"></i>{{user.get_username}}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'profilis' %}">{%trans "Profile"%}</a>
+                        <a class="dropdown-item" href="{%url 'patients_list'%}">{%trans "Patients"%}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{%url 'logout'%}">{%trans "Log out"%}</a>
+                    </div>
+                </li>
+
+                {%elif not user.is_authenticated or not user.is_doctor%}
+                <li><a href="{%url 'login'%}">{%trans "Login"%}</a></li>
+
+                <li><a href="{%url 'doctors_list'%}">{%trans "Doctors"%}</a></li>
+                <li><a href="{%url 'services'%}">{%trans "Services"%}</a></li>
+                <li><a href="{%url 'contact'%}">{%trans "Contact"%}</a></li>
+                <li>
+                    {%endif%}
+                    {% load i18n %}
+                    <form action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                        <select name="language" onchange="this.form.submit()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% for lang in LANGUAGES %}
+                            <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected" {% endif %}>
+                                {{ lang.1 }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="wrapper">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}}" style="background-color: #778899;" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <article class="block-content">
+        {%block content%}{%endblock%}
+    </article>
+
+    <footer>
+        &copy; Powered by Gertruda
+    </footer>
+</div>
+
+{% csrf_token %}
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css"/>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script scr="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+<script>
+jQuery.datetimepicker.setDateFormatter('moment')
+  $('#picker').datetimepicker({
+        format: 'YYYY-MM-DD HH:mm',
+        timepicker: true,
+        datepicker: true,
+        value: '2020-07-01 08:00',
+        defaultDate : '2020/07/01',
+        minDate : 0,
+        weeks: true,
+        step: 5,
+        disabledWeekDays: [0, 6],
+        allowTimes: ['08:00', '08:30',' 09:00', '09:30', '10:00',
+        '10:30', '11:00',' 11:30', '12:00', '12:30',
+        '13:00', '13:30',' 14:00', '14:30', '15:00',
+        '15:30', '16:00',' 16:30', '17:00', '17:30',
+        '18:00', '18:30',' 19:00', '19:30']
+
+
+})
+$('#toggle').on('click', function(){
+$('#picker').datetimepicker('toggle')
+})
+
+
+</script>
+
+
+<!--<script>-->
+<!--    $(document).ready(function(){-->
+<!--        var date_input=$('input[name="date"]'); //our date input has the name "date"-->
+<!--        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";-->
+<!--        date_input.datepicker({-->
+<!--            format: 'yyyy-mm-dd',-->
+<!--            container: container,-->
+<!--            todayHighlight: true,-->
+<!--            autoclose: true,-->
+
+<!--        })-->
+<!--    })-->
+
+
+
+<!--</script>-->
+<script>
+      tinymce.init({
+        selector: '#id_text',
+         plugins: [
+    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+    "searchreplace wordcount visualblocks visualchars code fullscreen",
+    "insertdatetime media nonbreaking save table contextmenu directionality",
+    "emoticons template paste textcolor colorpicker textpattern imagetools"
+    ],
+     toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft     aligncenter alignright alignjustify | bullist numlist outdent indent | link     image",
+    toolbar2: "print preview media | forecolor backcolor emoticons | codesample | code",
+    image_advtab: true,
+    templates: [
+    {title: 'Test template 1', content: 'Test 1'},
+    {title: 'Test template 2', content: 'Test 2'}
+    ],
+      });
+
+
+
+</script>
+
+
+</body>
+</html>

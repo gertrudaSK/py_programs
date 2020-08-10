@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+{% load i18n %}
+<section class="doctors">
+    {%for doctor in doctor_list%}
+    <div class="card">
+        <img src="{{doctor.user.profile.nuotrauka.url}}" alt="portrait">
+        <div style="padding: 0 10px 0 10px;">
+            <h3>{{doctor.name}}</h3>
+            <h4>{%trans "Specialty"%}: {{doctor.display_departments}}</h4>
+            <h4>{{doctor.experience}} years of experience</h4>
+            <h4>{{doctor.email}}</h4>
+            <h4>{{doctor.phone}}</h4>
+        </div>
+    </div>
+    {%endfor%}
+</section>
+{% endblock %}
+

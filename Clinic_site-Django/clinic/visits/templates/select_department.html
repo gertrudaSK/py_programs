@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+{%block content%}
+{% load i18n %}
+
+<article class="selection">
+
+    {%if user.is_authenticated%}
+    <div class="content-section">
+        <h2>{%trans "New Appointment"%}</h2>
+
+        <h3>{%trans "Please select the department"%}</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <input class="btn btn-success" style="margin: 10px 10px 10px 0;" type="submit" value="OK">
+        </form>
+    </div>
+    {%elif not user.is_authenticated%}
+    <div class="select-status">
+        <h2>{%trans "I have an account"%}</h2>
+        <p class="select-button"><a href="{%url 'login'%}?next={{request.path}}" type="button" class="btn btn-primary btn-lg">{%trans "Sign in"%}</a></p>
+    </div>
+    <div class="select-status">
+        <h2>{%trans "I want to become clinic patient"%}</h2>
+        <p class="select-button"><a href="{%url 'patient_register'%}?next=/appointment/new/" type="button" class="btn btn-success btn-lg">{%trans "Register"%}</a></p>
+    </div>
+</article>
+{%endif%}
+
+
+{%endblock%}
