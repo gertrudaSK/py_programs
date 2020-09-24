@@ -44,8 +44,7 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-def send_message(recipient_id, response):
-    print(request.data)
+def send_message(recipient_id, response):    
     bot.send_text_message(recipient_id, response)
     return "success"
 
