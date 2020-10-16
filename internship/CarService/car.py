@@ -11,7 +11,6 @@ class CarStatus:
 
 class Car:
     _registered_cars = []
-    car_number_pattern = re.compile(r'[A-Z]{3}[-]\d{3}')
 
     def __init__(self, car_number=None):
         self.status = None
@@ -61,7 +60,8 @@ class Car:
                         self._car_has_number = True
 
     def is_car_number_valid(self, number):
-        validation = self.car_number_pattern.search(number)
+        pattern = re.compile(r'[A-Z]{3}[-]\d{3}')
+        validation = pattern.search(number)
         if validation is None:
             return False
         return True
@@ -69,7 +69,6 @@ class Car:
     def __del__(self):
         if self.car_number in self._registered_cars:
             self._registered_cars.remove(self.car_number)
-
 
 if __name__ == '__main__':
     a = Car('AAA-002')
