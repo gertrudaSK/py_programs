@@ -63,7 +63,7 @@ class Apartment(db.Model):
     house_ID = db.Column(db.Integer, db.ForeignKey('HOUSE.id'))
     house = db.relationship("House")
     status_ID = db.Column(db.Integer, db.ForeignKey(
-        'APARTMENT_STATUS.id'))
+        'APARTMENT_STATUS.id'), nullable=False)
     status = db.relationship("ApartmentStatus")
     renter = db.relationship("Renter")
 
@@ -73,7 +73,10 @@ class Apartment(db.Model):
 
     def get_renter_email(self):
         renter = Renter.query.filter_by(id=self.id).first()
-        return renter.email
+        if renter and renter.email:
+            return renter.email
+        else:
+            return None
 
     def __repr__(self):
         return self.address
@@ -87,7 +90,7 @@ class Renter(db.Model):
     email = db.Column('Email', db.String(100), nullable=False)
     phone = db.Column('Phone', db.String(100), nullable=True)
     apartment_ID = db.Column(db.Integer, db.ForeignKey(
-        'APARTMENT.id'))
+        'APARTMENT.id'), nullable=False)
     apartment = db.relationship('Apartment')
 
     def __init__(self, name, surname, email, phone):
@@ -206,22 +209,23 @@ class Report(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     rent_ID = db.Column(db.Integer, db.ForeignKey('RENT.id'))
     rent = db.relationship("Rent", single_parent=True,
-                        cascade="all, delete-orphan")
+                           cascade="all, delete-orphan")
     electricity_ID = db.Column(db.Integer, db.ForeignKey('ELECTRICITY.id'))
     electricity = db.relationship("Electricity", single_parent=True,
-                               cascade="all, delete-orphan")
+                                  cascade="all, delete-orphan")
     gas_ID = db.Column(db.Integer, db.ForeignKey('GAS.id'))
-    gas = db.relationship("Gas", single_parent=True, cascade="all, delete-orphan")
+    gas = db.relationship("Gas", single_parent=True,
+                          cascade="all, delete-orphan")
     hot_water_ID = db.Column(db.Integer, db.ForeignKey('HOT_WATER.id'))
     hot_water = db.relationship("HotWater", single_parent=True,
-                             cascade="all, delete-orphan")
+                                cascade="all, delete-orphan")
     cold_water_ID = db.Column(db.Integer, db.ForeignKey('COLD_WATER.id'))
     cold_water = db.relationship("ColdWater", single_parent=True,
-                              cascade="all, delete-orphan")
+                                 cascade="all, delete-orphan")
     other_utilities_ID = db.Column(db.Integer,
                                    db.ForeignKey('OTHER_UTILITIES.id'))
     other_utilities = db.relationship("OtherUtilities", single_parent=True,
-                                   cascade="all, delete-orphan")
+                                      cascade="all, delete-orphan")
     sum_total = db.Column('Total Eur', db.Float)
     sent_ID = db.Column(db.Integer, db.ForeignKey('REPORT_STATUS.id'))
     sent = db.relationship("ReportStatus")
@@ -237,5 +241,3 @@ class ReportStatus(db.Model):
 
     def __repr__(self):
         return self.status
-
-

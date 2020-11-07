@@ -9,6 +9,7 @@ MAINTAINER Gertruda <viskoniekas@gmail.com>
 #apt is the ubuntu command line tool for advanced packaging tool(APT) for sw upgrade '''
 
 RUN apt update && \
+    apt-get install dos2unix && \
     apt install -y netcat-openbsd
 
 RUN apt-get install -y wget xz-utils libxrender1 libfontconfig1
@@ -39,7 +40,7 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
 COPY . .
-
 RUN chmod +x /Photos-Docker-Flask/docker-entrypoint.sh
+RUN dos2unix /Photos-Docker-Flask/docker-entrypoint.sh
 
 CMD ["/bin/bash", "/Photos-Docker-Flask/docker-entrypoint.sh"]

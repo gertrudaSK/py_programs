@@ -6,51 +6,58 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from .settings import EMAIL_HOST_PASSWORD, EMAIL_HOST_USER, EMAIL_USERNAME, \
     SECRET_KEY
+from flask_login import LoginManager
+from flask_migrate import Migrate
 from flask_admin.contrib.sqla import ModelView
 from flask_admin import BaseView, expose
 from flask import redirect, url_for
-from flask_login import LoginManager, current_user
-from config import app_config
-from flask_migrate import Migrate
+from flask_login import current_user
 
 basedir = os.path.abspath(os.path.dirname(__file__))
+db = SQLAlchemy()
+login_manager = LoginManager()
+bcrypt = Bcrypt()
+mail = Mail()
 
-app = Flask(__name__, instance_relative_config=True)
-app.config.from_pyfile('config.py')
-app.config['SECRET_KEY'] = SECRET_KEY
 
-db = SQLAlchemy(app)
-db.create_all()
+def create_app(config_name=os.getenv('FLASK_CONFIG')):
+    app = Flask(__name__, instance_relative_config=True)
+    app.config.from_pyfile('config.py')
+    db.init_app(app)
 
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'sign_in'
-login_manager.login_message_category = 'info'
-login_manager.login_message = "You need to sign up!"
+    app.config['SECRET_KEY'] = SECRET_KEY
 
-mail = Mail(app)
+    bcrypt.init_app(app)
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = EMAIL_USERNAME
-app.config['MAIL_PASSWORD'] = EMAIL_HOST_PASSWORD
-migrate = Migrate(app,db)
+    login_manager.init_app(app)
+    login_manager.login_view = 'sign_in'
+    login_manager.login_message_category = 'info'
+    login_manager.login_message = "You need to sign up!"
 
+    mail.init_app(app)
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USERNAME'] = EMAIL_USERNAME
+    app.config['MAIL_PASSWORD'] = EMAIL_HOST_PASSWORD
+    migrate = Migrate(app, db)
+    return app
+
+
+app = create_app()
 admin = Admin(app, name='Utilities Calculator', template_mode='bootstrap3')
 
-from app import views
+from .models import Service, ApartmentStatus, ReportStatus, User, \
+    House, \
+    Apartment, Renter, ServiceCost, Electricity, Gas, ServiceCost, \
+    HotWater, \
+    ColdWater, OtherUtilities, Rent
 
-def database_initialization_sequence():
-    from .models import Service, ApartmentStatus, ReportStatus, User, House, \
-        Apartment, Renter, ServiceCost, Electricity, Gas, ServiceCost, \
-        HotWater, \
-        ColdWater, OtherUtilities, Rent
+
+def insert_data():
     check_rows = Service.query.all()
     if len(check_rows) == 0:
-        db.init_app(app)
         with app.app_context():
-            db.create_all()
             db.session.add(ApartmentStatus(status='RENT'))
             db.session.add(ApartmentStatus(status='MAIN'))
             db.session.add(ReportStatus(status='YES'))
@@ -66,7 +73,7 @@ def database_initialization_sequence():
 
 class MyModelView(ModelView):
     def is_accessible(self):
-        return current_user.is_authenticated and current_user.email == "viskoniekas@gmail.com"
+        return current_user.is_authenticated
 
 
 class MyView(BaseView):
@@ -76,10 +83,6 @@ class MyView(BaseView):
 
 
 def admin_create():
-    from .models import Service, ApartmentStatus, ReportStatus, User, House, \
-        Apartment, Renter, ServiceCost, Electricity, Gas, ServiceCost, \
-        HotWater, \
-        ColdWater, OtherUtilities, Rent
     admin.add_view(MyView(name='Back to Page'))
     admin.add_view(MyModelView(User, db.session))
     admin.add_view(MyModelView(House, db.session))
@@ -93,3 +96,6 @@ def admin_create():
     admin.add_view(MyModelView(ColdWater, db.session))
     admin.add_view(MyModelView(OtherUtilities, db.session))
     admin.add_view(MyModelView(Rent, db.session))
+
+
+from . import views

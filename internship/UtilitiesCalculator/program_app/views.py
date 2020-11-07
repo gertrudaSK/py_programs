@@ -4,7 +4,7 @@ from datetime import timedelta
 from email.message import EmailMessage
 
 from flask import (render_template, redirect, url_for, flash, request,
-                   send_from_directory, current_app)
+                   send_from_directory)
 from .forms import (SignInForm, SignUpForm, PasswordResetForm, UtilitiesForm,
                     RequestResetForm, ProfileUpdateForm, ApartmentForm,
                     GenerateReportForm)
@@ -51,7 +51,7 @@ def sign_up():
             return redirect(url_for('home'))
         return render_template('sign_up.html', title='Register', form=form)
     except Exception:
-        flash('User can be only one!', 'danger')
+        flash('This user is already exists!', 'danger')
         return redirect(url_for('sign_up'))
 
 
@@ -534,10 +534,10 @@ def download_pdf(id):
 @login_required
 def report_pdf(id):
     download_pdf(id)
-    return send_from_directory(
-        os.path.join(os.getcwd(), os.path.abspath('.\\reports')),
-        filename=f'report-{id}.pdf',
-        as_attachment=True)
+    return send_from_directory(os.path.abspath(
+        os.path.join(os.path.dirname(__file__), '..', 'reports')),
+                               filename=f'report-{id}.pdf',
+                               as_attachment=True)
 
 
 def get_latest_pdf(path):
@@ -570,8 +570,14 @@ def send_report(id):
         Sincerely,
         Landlord
         '''
-    rep = Report.query.filter_by(id=1).first()
-    recipient = rep.rent.apartment.renter.email
+    rep = Report.query.filter_by(id=id).first()
+
+    recipient = rep.rent.apartment.get_renter_email()
+    if recipient is None:
+        flash(
+            f'The recipient has no email address!',
+            'danger')
+        return redirect("/")
     email = EmailMessage()
     email['from'] = 'Apartment Rent'
     email['to'] = recipient
@@ -594,6 +600,7 @@ def send_report(id):
         try:
             smtp.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
         except smtplib.SMTPAuthenticationError:
+            os.chdir('../')
             flash(
                 f'Username and Password not accepted!',
                 'danger')

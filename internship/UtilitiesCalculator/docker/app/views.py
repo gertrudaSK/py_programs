@@ -10,7 +10,7 @@ from .forms import (SignInForm, SignUpForm, PasswordResetForm, UtilitiesForm,
                     GenerateReportForm)
 from flask_login import (logout_user, login_user, login_required)
 from flask_login import current_user
-from . import (app, db, bcrypt, login_manager, basedir)
+from . import app, db, bcrypt, login_manager
 from .models import (Electricity, Gas, HotWater, ColdWater, Rent,
                      OtherUtilities,
                      User, Report, Apartment)
@@ -51,7 +51,7 @@ def sign_up():
             return redirect(url_for('home'))
         return render_template('sign_up.html', title='Register', form=form)
     except Exception:
-        flash('User can be only one!', 'danger')
+        flash('This user is already exists!', 'danger')
         return redirect(url_for('sign_up'))
 
 
@@ -571,7 +571,13 @@ def send_report(id):
         Landlord
         '''
     rep = Report.query.filter_by(id=id).first()
+
     recipient = rep.rent.apartment.get_renter_email()
+    if recipient is None:
+        flash(
+            f'The recipient has no email address!',
+            'danger')
+        return redirect("/")
     email = EmailMessage()
     email['from'] = 'Apartment Rent'
     email['to'] = recipient
@@ -594,6 +600,7 @@ def send_report(id):
         try:
             smtp.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
         except smtplib.SMTPAuthenticationError:
+            os.chdir('../')
             flash(
                 f'Username and Password not accepted!',
                 'danger')

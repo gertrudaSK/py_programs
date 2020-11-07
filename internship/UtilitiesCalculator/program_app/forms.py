@@ -45,12 +45,18 @@ class SignUpForm(FlaskForm):
                                                      "Passwords must match!")])
     submit = SubmitField('Submit')
 
-    def validate(self):
-        users = User.query.all()
-        if users:
-            raise ValidationError('User can be only one!')
-        return True
+    def validate_user(self, name):
+        user = User.query.filter_by(
+            name=name.data).first()
+        if user:
+            raise ValidationError('Username is already exists. Choose another one.')
 
+    def validate_email(self, email):
+        user = User.query.filter_by(
+            email=email.data).first()
+        if user:
+            raise ValidationError(
+                'This email is already exists. Choose another one.')
 
 class ProfileUpdateForm(FlaskForm):
     name = StringField('Name', [DataRequired()])

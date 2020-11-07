@@ -2,5 +2,5 @@ import os
 
 EMAIL_HOST_USER = 'XXX@gmail.com'
 EMAIL_USERNAME = 'XXX'
-EMAIL_HOST_PASSWORD = 'XXX'
+EMAIL_HOST_PASSWORD = 'YYY'
 SECRET_KEY = os.urandom(33)
