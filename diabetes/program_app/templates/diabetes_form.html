@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <h3 align="center">Do you have diabetes?</h3>
+    <form method='POST' action="">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            {{ form.age.label(class="form-control-label") }}
+            {{ form.age(class="form-control") }}
+            {% if form.age.errors %}
+            {% for error in form.age.errors %}
+            <small><font color="red">{{ error }}</font></small>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.gender.label(class="form-control-label") }}
+            {{ form.gender(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.polyuria.label(class="form-control-label") }}
+            {{ form.polyuria(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.polydipsia.label(class="form-control-label") }}
+            {{ form.polydipsia(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.weight.label(class="form-control-label") }}
+            {{ form.weight(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.weakness.label(class="form-control-label") }}
+            {{ form.weakness(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.polyphagia.label(class="form-control-label") }}
+            {{ form.polyphagia(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.genital.label(class="form-control-label") }}
+            {{ form.genital(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.vision.label(class="form-control-label") }}
+            {{ form.vision(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.itching.label(class="form-control-label") }}
+            {{ form.itching(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.irritability.label(class="form-control-label") }}
+            {{ form.irritability(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.healing.label(class="form-control-label") }}
+            {{ form.healing(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.paresis.label(class="form-control-label") }}
+            {{ form.paresis(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.muscle.label(class="form-control-label") }}
+            {{ form.muscle(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.alopecia.label(class="form-control-label") }}
+            {{ form.alopecia(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.obesity.label(class="form-control-label") }}
+            {{ form.obesity(class="form-control") }}
+        </div>
+        {{ form.submit }}
+    </form>
+</div>
+{% endblock %}
