@@ -1,6 +1,6 @@
 # QR Code Generator
 
-This is simple program that generates QR Code for registration form. This is useful for business controlling the risk of COVID-19.
+This is the simple program that generates QR Code for registration form. It is useful for business controlling the risk of COVID-19.
 
 ## Run with virtualenv
 - Create a virtualenv folder `virtualenv -p python3 venv`
